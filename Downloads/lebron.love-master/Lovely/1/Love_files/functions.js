@@ -38,9 +38,13 @@ $(window).resize(function() {
 })(jQuery);
 
 function timeElapse(date){
-	var current = Date();
+	var current = new Date();
+	//var timestamp1 =Date.parse(new Date());
 	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	
+	//alert(Date.parse(current)+"/"+ Date.parse(date));
 	var days = Math.floor(seconds / (3600 * 24));
+	//var days=Math.floor(seconds / (1000 * 60 * 60 * 24));
 	seconds = seconds % (3600 * 24);
 	var hours = Math.floor(seconds / 3600);
 	if (hours < 10) {
@@ -55,6 +59,18 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
+//	var days=Math.floor(date3/(1000*60*60*24));
+// 	var leave1=date3%(24*3600*1000);     //计算天数后剩余的毫秒数
+// 	var hours=Math.floor(leave1/(3600*1000));
+// 	var leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+// 	var minutes=Math.floor(leave2/(60*1000));
+// 	var leave3=leave2%(60*1000);          //计算分钟数后剩余的毫秒数
+// 	var seconds=Math.round(leave3/1000);
+// 	if (minutes < 10) 
+// 		minutes = "0" + minutes; 
+//	if (seconds < 10) 
+// 		seconds = "0" + seconds; 
+
 	var result = "第 <span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分钟 <span class=\"digit\">" + seconds + "</span> 秒"; 
 	$("#clock").html(result);
 }
